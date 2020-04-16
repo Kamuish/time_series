@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt 
 plt.style.use("seaborn-darkgrid")
 from matplotlib.lines import Line2D
-from find_peaks import peak_finder 
+from ex2_find_peaks import peak_finder 
 
 def calculate_speed_sound(R, R_err, spacing, spacing_err):
     R *= 696340  # pass from Sun radius to to km
