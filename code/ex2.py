@@ -27,6 +27,7 @@ path_2 = 'Keplerlightcurves/KIC6603624lightcurve.fou'
 data_2 = np.loadtxt(path_2)
 names = ['KIC 3656476', 'KIC 6603624' ]
 
+fig_full_power, axes_full_power = plt.subplots(2,1)
 
 fig, axes = plt.subplots(2,1, figsize = (13,5))
 fig_1, axes_1 = plt.subplots(2,1)
@@ -35,10 +36,13 @@ fig_1, axes_1 = plt.subplots(2,1)
 for index, data in enumerate([data_1, data_2]):
     ax = axes[index]
     ax.plot(data[:,0]*1000000, data[:,1]**2)
+    axes_full_power[index].plot(data[:,0]*1000000, data[:,1]**2)
 
-    ax.set_xlabel(r"Frequency [$\mu$ Hz]")
-    ax.set_ylabel("Power")
-    ax.set_title(names[index])
+    for a in [ax, axes_full_power[index]]:
+        a.set_xlabel(r"Frequency [$\mu$ Hz]")
+        a.set_ylabel("Power")
+        a.set_title(names[index])
+
 
     if index == 0:
         ax.set_xlim([1600,2200])
@@ -129,6 +133,7 @@ for index, data in enumerate([data_1, data_2]):
 
 fig.tight_layout()
 fig_1.tight_layout()
+fig_full_power.tight_layout()
 
 colors = ['black', 'red']
 lines = [Line2D([0], [0], linewidth=0, marker='o', color='black'), Line2D([0], [0], linewidth=3, linestyle='--', color='red')]
@@ -139,5 +144,6 @@ axes_1[1].legend(lines, labels, ncol=2, bbox_to_anchor=(0.43, 1.05))
 
 fig.savefig("/home/amiguel/phd/classes/time_series/project/report/Figures/ex2_freq-power.png")
 fig_1.savefig("/home/amiguel/phd/classes/time_series/project/report/Figures/ex2_overtone_freqs.png")
+fig_full_power.savefig("/home/amiguel/phd/classes/time_series/project/report/Figures/ex2_full-power.png")
 
 plt.show()
