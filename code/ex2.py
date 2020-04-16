@@ -20,10 +20,10 @@ def overtone_numb_calc(radius_star, speed_sound, peaks):
     return [int(round(0.5*((peak/1000000)*4*radius_star/speed_sound - 1))) for peak in peaks]
 
 
-path_1 = '/home/amiguel/phd/classes/time_series/project/Keplerlightcurves/KIC3656476lightcurve.fou'
+path_1 = 'Keplerlightcurves/KIC3656476lightcurve.fou'
 data_1 = np.loadtxt(path_1)
 
-path_2 = '/home/amiguel/phd/classes/time_series/project/Keplerlightcurves/KIC6603624lightcurve.fou'
+path_2 = 'Keplerlightcurves/KIC6603624lightcurve.fou'
 data_2 = np.loadtxt(path_2)
 names = ['KIC 3656476', 'KIC 6603624' ]
 
@@ -85,7 +85,6 @@ for index, data in enumerate([data_1, data_2]):
     yy = data[:,1]**2 
 
     peaks = peak_finder(xx,yy, limts)
-
 
     axx = axes_1[index]
     XX = [n for n in range(len(peaks) )]
