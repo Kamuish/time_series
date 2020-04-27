@@ -20,7 +20,7 @@ def plot_spots(path):
     x_axis = np.arange(1749.5,1979, 0.5)
     plt.plot(x_axis, data)
     plt.xlabel("Year")
-    plt.ylabel("NUmber of sun spots")
+    plt.ylabel("Number of sun spots")
 
     plt.savefig("/home/amiguel/phd/classes/time_series/project/report/Figures/ex1_year_sunspot.png")
 
